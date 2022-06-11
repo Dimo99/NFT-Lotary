@@ -1,9 +1,12 @@
-const { ethers } = require("ethers");
-const { task } = require("hardhat/config");
+import { ethers } from "ethers";
+import { HardhatUserConfig, task } from "hardhat/config";
 
-require("@nomiclabs/hardhat-waffle");
-require("@nomiclabs/hardhat-etherscan");
-require("dotenv").config();
+import "@nomiclabs/hardhat-waffle";
+import "@nomiclabs/hardhat-etherscan";
+import "hardhat-gas-reporter";
+import "solidity-coverage";
+import * as dotenv from "dotenv";
+dotenv.config();
 
 task("deploy", "Deploys contract on a provided network").setAction(
   async (taskArguments, hre, runSuper) => {
@@ -20,7 +23,7 @@ task("deploy", "Deploys contract on a provided network").setAction(
 
     console.log("Ticket contract address: ", ticketContract.address);
 
-    const factory = await hre.ethers.getContractFactory("LottaryFactory");
+    const factory = await hre.ethers.getContractFactory("LotteryFactory");
     const factoryContract = await factory.deploy(ticketContract.address);
 
     console.log("Waiting for Factory deployment...");
@@ -31,31 +34,41 @@ task("deploy", "Deploys contract on a provided network").setAction(
   }
 );
 
-task("verify-contracts", "Verify").setAction(
+task("verify-contracts", "Verify")
+.addParam("ticket", "The address of the Ticket logic contract")
+.addParam("factory", "The address of the Factory contract")
+.setAction(
   async (taskArguments, hre, runSuper) => {
     await hre.run("verify:verify", {
-      address: "0x3652600729f124a26A55a40aA7c9578c0b82f935",
+      address: taskArguments.ticket,
       constructorArguments: [],
     });
     await hre.run("verify:verify", {
-      address:"0xA86A87B0102272CD144c95068559CF484C0DbfF4",
-      constructorArguments: ["0x3652600729f124a26A55a40aA7c9578c0b82f935"],
+      address: taskArguments.factory,
+      constructorArguments: [taskArguments.ticket],
     });
   }
 );
 
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
-module.exports = {
+const config: HardhatUserConfig = {
   networks: {
     ropsten: {
       url: process.env.URI,
-      accounts: [process.env.PRIVATE_KEY],
+      accounts: [process.env.PRIVATE_KEY!],
     },
   },
-  solidity: "0.8.9",
+  solidity: {
+    version: "0.8.9",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 1000,
+      },
+    },
+  },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_KEY
-  }
+    apiKey: process.env.ETHERSCAN_KEY,
+  },
 };
+
+export default config;

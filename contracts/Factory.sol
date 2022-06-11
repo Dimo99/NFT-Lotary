@@ -2,11 +2,16 @@
 pragma solidity 0.8.9;
 
 import "./Ticket.sol";
-import "@openzeppelin/contracts-upgradeable/proxy/ClonesUpgradeable.sol";
+import "@openzeppelin/contracts/proxy/Clones.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract LottaryFactory {
+/**
+ * @title Lottery Factory
+ * @notice Creates instances of Ticket lottery implementation
+ */
+contract Factory is Ownable {
     event NewLottaryCreated(
-        address lottaryAddress,
+        address lotteryAddress,
         string name,
         string symbol,
         uint256 startBlock,
@@ -14,44 +19,52 @@ contract LottaryFactory {
         uint256 ticketPrice
     );
 
-    address public implementationAddress;
+    address public immutable s_implementationAddress;
 
-    constructor(address _implementationAddress) {
-        implementationAddress = _implementationAddress;
+    constructor(address implementationAddress) {
+        s_implementationAddress = implementationAddress;
     }
 
-    function createLottary(
+    /**
+     * @notice creates EIP 1167 minimal proxy using create2
+     */
+    function createLottery(
         string calldata name,
         string calldata symbol,
         uint256 startBlock,
         uint256 endBlock,
-        uint256 ticketPrice
-    ) external returns (address) {
-        address lottary = ClonesUpgradeable.cloneDeterministic(
-            implementationAddress,
+        uint256 ticketPrice,
+        string calldata ticketURI
+    ) external onlyOwner returns (address) {
+        // creates EIP 1167 minimal proxy using create2
+        address lottery = Clones.cloneDeterministic(
+            s_implementationAddress,
             keccak256(
                 abi.encodePacked(
+                    msg.sender,
                     name,
                     symbol,
                     startBlock,
                     endBlock,
-                    ticketPrice
+                    ticketPrice,
+                    ticketURI
                 )
             )
         );
 
-        Ticket lottaryContract = Ticket(lottary);
-        lottaryContract.initialize(
+        Ticket lotteryContract = Ticket(lottery);
+        lotteryContract.initialize(
             msg.sender,
             name,
             symbol,
             startBlock,
             endBlock,
-            ticketPrice
+            ticketPrice,
+            ticketURI
         );
 
         emit NewLottaryCreated(
-            lottary,
+            lottery,
             name,
             symbol,
             startBlock,
@@ -59,6 +72,6 @@ contract LottaryFactory {
             ticketPrice
         );
 
-        return lottary;
+        return lottery;
     }
 }

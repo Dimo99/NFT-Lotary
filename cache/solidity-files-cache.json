@@ -2,15 +2,15 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\contracts\\Factory.sol": {
-      "lastModificationDate": 1654885331495,
-      "contentHash": "5014465933240472ef865272a1c01f0a",
+      "lastModificationDate": 1655041990237,
+      "contentHash": "c60655cdfd85b1c349cbcb7b178966d4",
       "sourceName": "contracts/Factory.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -25,31 +25,31 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
         "./Ticket.sol",
-        "@openzeppelin/contracts-upgradeable/proxy/ClonesUpgradeable.sol"
+        "@openzeppelin/contracts/proxy/Clones.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
       ],
       "versionPragmas": [
         "0.8.9"
       ],
       "artifacts": [
-        "LottaryFactory"
+        "Factory"
       ]
     },
     "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\contracts\\Ticket.sol": {
-      "lastModificationDate": 1654885063809,
-      "contentHash": "b5320cd3450d148d269efc2f4d0952c0",
+      "lastModificationDate": 1655045790147,
+      "contentHash": "039f99b2ef5a5a099706b3ac57430dd2",
       "sourceName": "contracts/Ticket.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -64,8 +64,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -79,16 +78,16 @@
         "Ticket"
       ]
     },
-    "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\node_modules\\@openzeppelin\\contracts-upgradeable\\proxy\\ClonesUpgradeable.sol": {
-      "lastModificationDate": 1654882874847,
-      "contentHash": "3ff6f676d1a3c0cd54168ac0b4e9930f",
-      "sourceName": "@openzeppelin/contracts-upgradeable/proxy/ClonesUpgradeable.sol",
+    "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\node_modules\\@openzeppelin\\contracts\\proxy\\Clones.sol": {
+      "lastModificationDate": 1654949985028,
+      "contentHash": "f741efede98f234458f02f818f80c7f3",
+      "sourceName": "@openzeppelin/contracts/proxy/Clones.sol",
       "solcConfig": {
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -103,8 +102,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [],
@@ -112,7 +110,44 @@
         "^0.8.0"
       ],
       "artifacts": [
-        "ClonesUpgradeable"
+        "Clones"
+      ]
+    },
+    "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\node_modules\\@openzeppelin\\contracts\\access\\Ownable.sol": {
+      "lastModificationDate": 1654949985290,
+      "contentHash": "8398972af73b4e9e5ff3b31cad86234f",
+      "sourceName": "@openzeppelin/contracts/access/Ownable.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "../utils/Context.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Ownable"
       ]
     },
     "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\node_modules\\@openzeppelin\\contracts-upgradeable\\token\\ERC721\\ERC721Upgradeable.sol": {
@@ -123,8 +158,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -139,8 +174,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -168,8 +202,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -184,8 +218,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -207,8 +240,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -223,8 +256,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -245,8 +277,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -261,8 +293,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [],
@@ -281,8 +312,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -297,8 +328,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -319,8 +349,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -335,8 +365,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [],
@@ -355,8 +384,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -371,8 +400,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -393,8 +421,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -409,8 +437,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [],
@@ -429,8 +456,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -445,8 +472,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -468,8 +494,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -484,8 +510,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [
@@ -506,8 +531,8 @@
         "version": "0.8.9",
         "settings": {
           "optimizer": {
-            "enabled": false,
-            "runs": 200
+            "enabled": true,
+            "runs": 1000
           },
           "outputSelection": {
             "*": {
@@ -522,8 +547,7 @@
                 "ast"
               ]
             }
-          },
-          "libraries": {}
+          }
         }
       },
       "imports": [],
@@ -532,6 +556,41 @@
       ],
       "artifacts": [
         "IERC165Upgradeable"
+      ]
+    },
+    "C:\\Users\\Dimaranti\\Desktop\\NFT lottary\\node_modules\\@openzeppelin\\contracts\\utils\\Context.sol": {
+      "lastModificationDate": 1654949985030,
+      "contentHash": "5f2c5c4b6af2dd4551027144797bc8be",
+      "sourceName": "@openzeppelin/contracts/utils/Context.sol",
+      "solcConfig": {
+        "version": "0.8.9",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 1000
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context"
       ]
     }
   }
