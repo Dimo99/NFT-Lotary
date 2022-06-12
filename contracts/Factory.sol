@@ -36,7 +36,6 @@ contract Factory is Ownable {
         uint256 ticketPrice,
         string calldata ticketURI
     ) external onlyOwner returns (address) {
-        // creates EIP 1167 minimal proxy using create2
         address lottery = Clones.cloneDeterministic(
             s_implementationAddress,
             keccak256(
