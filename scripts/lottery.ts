@@ -20,7 +20,7 @@ async function run() {
       "LT",
       startBlock.toString(),
       blockEnd.toString(),
-      ethers.utils.parseEther("0.01"),
+      ethers.utils.parseEther("1"),
       "https://ipfs.io/ipfs/QmRxwABp5reTY446ojFN97RcKbn82mprkkTuedHghsrLV4"
     )
     .catch((c: any) => c);

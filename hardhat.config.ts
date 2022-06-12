@@ -51,12 +51,6 @@ task("verify-contracts", "Verify")
 );
 
 const config: HardhatUserConfig = {
-  networks: {
-    ropsten: {
-      url: process.env.URI,
-      accounts: [process.env.PRIVATE_KEY!],
-    },
-  },
   solidity: {
     version: "0.8.9",
     settings: {
@@ -65,10 +59,7 @@ const config: HardhatUserConfig = {
         runs: 1000,
       },
     },
-  },
-  etherscan: {
-    apiKey: process.env.ETHERSCAN_KEY,
-  },
+  }
 };
 
 export default config;
